@@ -23,7 +23,7 @@ class CircularDoublyLinkedList:
     def __str__(self):
         current_node = self.head
         result = ''
-        while current_node is not None:
+        while current_node:
             result += str(current_node.value)
             current_node = current_node.next
             if current_node == self.head:
@@ -84,6 +84,18 @@ class CircularDoublyLinkedList:
             current_node = current_node.prev
             if current_node == self.tail:
                 break
+    
+    def search(self,target):
+
+        current_node = self.head
+        while current_node:
+            if current_node.value == target:
+                return True
+            current_node = current_node.next
+            if current_node == self.head:
+                break
+        return False
+
 
 if __name__ == "__main__":
 
@@ -95,3 +107,4 @@ if __name__ == "__main__":
     a.append(4)
     a.prepend(-1)
     a.reverse_traverse()
+    print(a.search(3))
