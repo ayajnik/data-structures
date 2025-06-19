@@ -155,6 +155,17 @@ class CircularDoublyLinkedList:
         self.head.prev = self.tail
         self.length -= 1
 
+    def remove(self,index):
+
+        popped_node = self.get(index)
+        popped_node.next.prev = popped_node.prev
+        popped_node.prev.next = popped_node.next
+        popped_node.next = None
+        popped_node.prev = None
+        self.length -= 1
+
+
+
 
 
 if __name__ == "__main__":
@@ -175,4 +186,5 @@ if __name__ == "__main__":
     
     a.popped_first()
     a.pop()
+    a.remove(2)
     a.reverse_traverse()
