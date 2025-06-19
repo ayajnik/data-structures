@@ -96,6 +96,21 @@ class CircularDoublyLinkedList:
                 break
         return False
 
+    def get(self,index):
+
+        current_node = None
+        if self.length // 2 < index:
+            current_node = self.head
+            for i in range(index):
+                current_node = current_node.next
+            print('Node found in first half of LL')
+        else:
+            current_node = self.tail
+            for i in range(self.length-1,index,-1):
+                current_node = current_node.prev
+            print('Node found in second half of LL')
+        return current_node
+
 
 if __name__ == "__main__":
 
@@ -108,3 +123,4 @@ if __name__ == "__main__":
     a.prepend(-1)
     a.reverse_traverse()
     print(a.search(3))
+    print(a.get(2))
