@@ -118,6 +118,24 @@ class CircularDoublyLinkedList:
             temp.value = value
             return True
         return False
+    
+    def insert(self,value,index):
+
+        if index == 0:
+            self.append(value)
+        elif index == -1:
+            self.prepend(value)
+        elif index < 0 or index > self.length:
+            raise IndexError
+        
+        new_node = Node(value)
+        temp_node = self.get(index-1)
+        new_node.next = temp_node.next
+        new_node.prev = temp_node
+        temp_node.next.prev = new_node
+        temp_node.next = new_node
+        self.length += 1
+
 
 
 if __name__ == "__main__":
@@ -133,4 +151,6 @@ if __name__ == "__main__":
     print(a.search(3))
     print(a.get(2))
     print(a.set_value(2,60))
+    a.reverse_traverse()
+    a.insert(70,3)
     a.reverse_traverse()
