@@ -111,6 +111,14 @@ class CircularDoublyLinkedList:
             print('Node found in second half of LL')
         return current_node
 
+    def set_value(self,index,value):
+
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
 
 if __name__ == "__main__":
 
@@ -124,3 +132,5 @@ if __name__ == "__main__":
     a.reverse_traverse()
     print(a.search(3))
     print(a.get(2))
+    print(a.set_value(2,60))
+    a.reverse_traverse()
