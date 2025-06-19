@@ -164,6 +164,13 @@ class CircularDoublyLinkedList:
         popped_node.prev = None
         self.length -= 1
 
+    def delete_all(self):
+
+        self.head = None
+        self.tail = None
+        self.length = 0
+        print("Complete LL has been deleted")
+
 
 
 
@@ -188,3 +195,4 @@ if __name__ == "__main__":
     a.pop()
     a.remove(2)
     a.reverse_traverse()
+    a.delete_all()
