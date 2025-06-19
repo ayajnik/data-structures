@@ -47,20 +47,51 @@ class CircularDoublyLinkedList:
             self.tail = new_node
 
         self.length += 1
+    
+    def prepend(self,value):
+
+        new_node = Node(value)
+
+        if self.length == 0:
+            new_node.next = new_node
+            new_node.prev = new_node
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            new_node.prev = self.tail
+            self.head.prev = new_node
+            self.head = new_node
+        
+        self.length += 1
+
+    def traverse(self):
+        if self.head is None:
+            return  # or print("List is empty")
+
+        current_node = self.head
+        while True:
+            print(current_node.value)
+            current_node = current_node.next
+            if current_node == self.head:
+                break
+    
+    def reverse_traverse(self):
+
+        current_node = self.tail
+        while current_node:
+            print(current_node.value)
+            current_node = current_node.prev
+            if current_node == self.tail:
+                break
 
 if __name__ == "__main__":
+
     a = CircularDoublyLinkedList()
+    a.append(0)
     a.append(1)
     a.append(2)
     a.append(3)
-    print(a)
-
-
-
-if __name__ == "__main__":
-    a = CircularDoublyLinkedList()
-    a.append(1)
-    a.append(2)
-    a.append(3)
-    print(a)
-
+    a.append(4)
+    a.prepend(-1)
+    a.reverse_traverse()
