@@ -143,6 +143,17 @@ class CircularDoublyLinkedList:
         popped_node.prev = None
         self.head.prev = self.tail
         self.tail.next = self.head
+        self.length -= 1
+
+    def pop(self):
+
+        popped_node = self.tail
+        self.tail = self.tail.prev
+        popped_node.next = None
+        popped_node.prev = None
+        self.tail.next = self.head
+        self.head.prev = self.tail
+        self.length -= 1
 
 
 
@@ -155,12 +166,13 @@ if __name__ == "__main__":
     a.append(3)
     a.append(4)
     a.prepend(-1)
-    a.reverse_traverse()
+    
     print(a.search(3))
     print(a.get(2))
     print(a.set_value(2,60))
-    a.reverse_traverse()
+    
     a.insert(70,3)
-    a.reverse_traverse()
+    
     a.popped_first()
+    a.pop()
     a.reverse_traverse()
